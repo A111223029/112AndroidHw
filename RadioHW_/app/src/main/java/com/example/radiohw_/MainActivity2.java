@@ -17,11 +17,11 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        // 获取传递的数据
+        // 獲取傳遞的數據
         Intent intent = getIntent();
         String outputStr = intent.getStringExtra("outputString");
 
-        // 现在你可以使用outputStr进行你的操作，例如将它设置到TextView中显示
+        // 現在你可以使用outputStr進行你的操作，例如將它設定到TextView中顯示
         TextView outputTextView = findViewById(R.id.outputTextView);
         outputTextView.setText(outputStr);
     }
