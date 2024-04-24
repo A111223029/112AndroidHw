@@ -6,8 +6,7 @@ package com.example.radiohw_;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,18 +37,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String outputStr = "";
 
-
-
-
                 RadioButton boy = (RadioButton) findViewById(R.id.rdbBoy);
                 RadioButton girl = (RadioButton) findViewById(R.id.rdbGirl);
                 if(boy.isChecked())
                     outputStr += "男生\n";
                 else if(girl.isChecked())
                     outputStr += "女生\n";
-
-
-
 
                 RadioGroup type = (RadioGroup) findViewById(R.id.rgType);
 //                switch (type.getCheckedRadioButtonId()){
@@ -75,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 EditText editTextNumber = findViewById(R.id.editTextNumber);
                 // 獲取 EditText 中的數字
                 int number = Integer.parseInt(editTextNumber.getText().toString());
-
-
                 if(number>0)
                     outputStr += "共"+String.valueOf(number)+"張\n";
                 else
@@ -106,17 +97,13 @@ public class MainActivity extends AppCompatActivity {
                 // 將總金額輸出到 outputStr
                 outputStr += "總金額：" + totalPrice + "元";
 
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("outputString", outputStr);
+                startActivity(intent);
 
 
-
-
-
-
-
-
-
-                TextView output = (TextView) findViewById(R.id.lblOutput);
-                output.setText(outputStr);
+//                TextView output = (TextView) findViewById(R.id.lblOutput);
+//                output.setText(outputStr);
             }
         });
     }
