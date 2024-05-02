@@ -7,26 +7,25 @@
     tools:context=".MainActivity">
 
 
-
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="張數:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        android:text="@string/ticketTYpe"
+        app:layout_constraintBottom_toTopOf="@+id/rgType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
-
+        app:layout_constraintVertical_bias="0.921" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="性別:"
+        android:text="@string/gender"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,67 +46,20 @@
         app:layout_constraintTop_toTopOf="parent" >
 
 
-
-
         <RadioButton
             android:id="@+id/rdbBoy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="男" />
-
-
+            android:text="@string/male" />
 
 
         <RadioButton
             android:id="@+id/rdbGirl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="女" />
+            android:text="@string/female" />
     </RadioGroup>
-
-
-
-
-    <RadioGroup
-        android:id="@+id/rgType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="184dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-
-
-        <RadioButton
-            android:id="@+id/rdbAdult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="全票\n(500NTD)" />
-
-
-
-
-        <RadioButton
-            android:id="@+id/rdbChild"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="兒童票\n(250NTD)" />
-
-
-
-
-        <RadioButton
-            android:id="@+id/rdbStudent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="學生票\n(400NTD)" />
-    </RadioGroup>
-
-
 
 
     <Button
@@ -116,24 +68,45 @@
         android:layout_height="69dp"
         android:layout_marginTop="20dp"
         android:onClick="button_Click"
-        android:text="確認購買"
+        android:text="@string/confirm"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgType"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.327" />
 
-
-    <TextView
-        android:id="@+id/lblOutput"
+    <RadioGroup
+        android:id="@+id/rgType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="224dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="parent">
 
+
+        <RadioButton
+            android:id="@+id/rdbAdult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regularticket" />
+
+
+        <RadioButton
+            android:id="@+id/rdbChild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/childticket" />
+
+
+        <RadioButton
+            android:id="@+id/rdbStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/studentticket" />
+    </RadioGroup>
 
     <EditText
         android:id="@+id/editTextNumber"
@@ -144,12 +117,31 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.453" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/numberOfTickets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 
+    <TextView
+        android:id="@+id/lblOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
