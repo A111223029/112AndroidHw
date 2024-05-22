@@ -7,11 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <View
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner_main"
+        app:layout_constraintBottom_toTopOf="@id/listview"/>
+
     <Spinner
+        android:id="@+id/spinner_main"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:id="@+id/Main"
-        android:entries="@array/MainName"
+        android:entries="@array/SpinnerMain"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="16dp"
@@ -32,6 +40,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Main" />
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        />
+
+    <TextView
+        android:id="@+id/txvmain1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="76dp"
+        android:text="主餐："
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
+
+    <TextView
+        android:id="@+id/txvmain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="附餐："
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/txvmain1"
+        app:layout_constraintTop_toBottomOf="@+id/txvmain1" />
+
+    <TextView
+        android:id="@+id/txvdrink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="飲料："
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/txvmain2"
+        app:layout_constraintTop_toBottomOf="@+id/txvmain2" />
+
+    <TextView
+        android:id="@+id/txvmain1C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="請選擇"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/txvmain1"
+        app:layout_constraintTop_toTopOf="@id/txvmain1"
+        app:layout_constraintBottom_toBottomOf="@id/txvmain1"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/txvmain2C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="請選擇"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/txvmain2"
+        app:layout_constraintTop_toTopOf="@id/txvmain2"
+        app:layout_constraintBottom_toBottomOf="@id/txvmain2"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/txvdrinkC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="請選擇"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/txvdrink"
+        app:layout_constraintTop_toTopOf="@id/txvdrink"
+        app:layout_constraintBottom_toBottomOf="@id/txvdrink"
+        android:layout_marginStart="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">MenuHW</string>
-        <string-array name="MainName">
-            <item >主餐</item>
-            <item >附餐</item>
-            <item >飲料</item>
-        </string-array>
+    <string-array name="SpinnerMain">
+        <item>主餐</item>
+        <item>附餐</item>
+        <item>飲料</item>
+    </string-array>
     <string-array name="order1">
         <item>牛肉漢堡</item>
         <item>豬肉漢堡</item>

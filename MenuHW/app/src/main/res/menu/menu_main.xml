@@ -7,7 +7,7 @@
         android:title="送出"
         app:showAsAction="never" />
     <item
-        android:id="@+id/Cencel"
+        android:id="@+id/Cancel"
         android:title="取消"
         app:showAsAction="never" />
 </menu>
