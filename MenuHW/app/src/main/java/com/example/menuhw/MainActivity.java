@@ -9,14 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
     ListView listView;
+    TextView txvmain1C, txvmain2C, txvdrinkC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner_main);
         listView = findViewById(R.id.listview);
+        txvmain1C = findViewById(R.id.txvmain1C);
+        txvmain2C = findViewById(R.id.txvmain2C);
+        txvdrinkC = findViewById(R.id.txvdrinkC);
 
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.SpinnerMain, android.R.layout.simple_spinner_item);
@@ -49,38 +51,23 @@ public class MainActivity extends AppCompatActivity {
         if (position == 0) {
             adapter = ArrayAdapter.createFromResource(this,
                     R.array.order1, android.R.layout.simple_list_item_1);
-            // 设置主餐的点击事件
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, android.view.View view, int position, long id) {
-                    TextView txvmain1C = findViewById(R.id.txvmain1C);
-                    String selectedItem = (String) parent.getItemAtPosition(position);
-                    txvmain1C.setText(selectedItem);
-                }
+            listView.setOnItemClickListener((parent, view, position1, id) -> {
+                String selectedItem = (String) parent.getItemAtPosition(position1);
+                txvmain1C.setText(selectedItem);
             });
         } else if (position == 1) {
             adapter = ArrayAdapter.createFromResource(this,
                     R.array.order2, android.R.layout.simple_list_item_1);
-            // 设置附餐的点击事件
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, android.view.View view, int position, long id) {
-                    TextView txvmain2C = findViewById(R.id.txvmain2C);
-                    String selectedItem = (String) parent.getItemAtPosition(position);
-                    txvmain2C.setText(selectedItem);
-                }
+            listView.setOnItemClickListener((parent, view, position12, id) -> {
+                String selectedItem = (String) parent.getItemAtPosition(position12);
+                txvmain2C.setText(selectedItem);
             });
         } else {
             adapter = ArrayAdapter.createFromResource(this,
                     R.array.order3, android.R.layout.simple_list_item_1);
-            // 设置飲料的点击事件
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, android.view.View view, int position, long id) {
-                    TextView txvdrinkC = findViewById(R.id.txvdrinkC);
-                    String selectedItem = (String) parent.getItemAtPosition(position);
-                    txvdrinkC.setText(selectedItem);
-                }
+            listView.setOnItemClickListener((parent, view, position13, id) -> {
+                String selectedItem = (String) parent.getItemAtPosition(position13);
+                txvdrinkC.setText(selectedItem);
             });
         }
         listView.setAdapter(adapter);
@@ -91,42 +78,33 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int itemID = item.getItemId();
-        if (itemID == R.id.Send) {
-            // 创建一个新的Intent对象
-            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-
-            // 获取当前TextView的内容
-            TextView txvmain1C = findViewById(R.id.txvmain1C);
-            String text1 = txvmain1C.getText().toString();
-            TextView txvmain2C = findViewById(R.id.txvmain2C);
-            String text2 = txvmain2C.getText().toString();
-            TextView txvdrinkC = findViewById(R.id.txvdrinkC);
-            String text3 = txvdrinkC.getText().toString();
-
-            // 将内容添加到Intent中
-            intent.putExtra("text1", text1);
-            intent.putExtra("text2", text2);
-            intent.putExtra("text3", text3);
-
-            // 启动第二个活动
-            startActivity(intent);
-
+        int id = item.getItemId();
+        if (id == R.id.Send) {
+            sendOrder();
             return true;
-        } else if (itemID == R.id.Cancel) {
-            TextView txvmain1C = findViewById(R.id.txvmain1C);
-            TextView txvmain2C = findViewById(R.id.txvmain2C);
-            TextView txvdrinkC = findViewById(R.id.txvdrinkC);
-
-            // 將 TextView 重置為初始狀態
-            txvmain1C.setText("請選擇");
-            txvmain2C.setText("請選擇");
-            txvdrinkC.setText("請選擇");
+        } else if (id == R.id.Cancel) {
+            resetOrder();
             return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
+
+    private void sendOrder() {
+        Intent intent = new Intent(this, OrderSummaryActivity.class);
+        intent.putExtra("mainCourse", txvmain1C.getText().toString());
+        intent.putExtra("sideDish", txvmain2C.getText().toString());
+        intent.putExtra("drink", txvdrinkC.getText().toString());
+        startActivity(intent);
+    }
+
+    private void resetOrder() {
+        txvmain1C.setText("請選擇");
+        txvmain2C.setText("請選擇");
+        txvdrinkC.setText("請選擇");
+    }
 }
